@@ -1,0 +1,1753 @@
+/* =========================================================
+   JOSÉ PIRÁN — LANDING PAGE
+   ========================================================= */
+
+:root {
+  --violeta: #321f55;
+  --uva-footer: #1f1237;
+  --blanco: #ffffff;
+
+  --blanco-85: rgba(255, 255, 255, 0.85);
+  --blanco-70: rgba(255, 255, 255, 0.7);
+  --blanco-50: rgba(255, 255, 255, 0.5);
+  --blanco-18: rgba(255, 255, 255, 0.18);
+  --blanco-08: rgba(255, 255, 255, 0.08);
+  --blanco-05: rgba(255, 255, 255, 0.05);
+
+  --font-display: "Anton", "Arial Narrow", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+
+  --page-padding: clamp(1.25rem, 4vw, 5rem);
+  --content-width: 1600px;
+
+  --transition-fast: 220ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  --transition-smooth: 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--violeta);
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  overflow-x: hidden;
+
+    background:
+        radial-gradient(
+        circle at 12% 12%,
+        rgba(118, 91, 166, 0.18) 0%,
+        transparent 30%
+        ),
+
+        radial-gradient(
+        circle at 88% 32%,
+        rgba(101, 73, 151, 0.15) 0%,
+        transparent 28%
+        ),
+
+        radial-gradient(
+        circle at 35% 72%,
+        rgba(89, 62, 136, 0.13) 0%,
+        transparent 32%
+        ),
+
+        radial-gradient(
+        circle at 90% 88%,
+        rgba(118, 91, 166, 0.12) 0%,
+        transparent 25%
+        ),
+
+        linear-gradient(
+        160deg,
+        #321f55 0%,
+        #2c194b 48%,
+        #22143b 100%
+        );
+  color: var(--blanco);
+
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body,
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+::selection {
+  background: var(--blanco);
+  color: var(--violeta);
+}
+
+body::before {
+  content: "";
+
+  position: fixed;
+  z-index: -1;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at 8% 35%,
+      rgba(255, 255, 255, 0.035) 0%,
+      transparent 22%
+    ),
+
+    radial-gradient(
+      ellipse at 92% 65%,
+      rgba(196, 174, 230, 0.055) 0%,
+      transparent 24%
+    );
+}
+
+/* =========================================================
+   ACCESIBILIDAD
+   ========================================================= */
+
+:focus-visible {
+  outline: 2px solid var(--blanco);
+  outline-offset: 5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+
+  background: transparent;
+}
+
+
+/* =========================================================
+   CONTENEDOR GENERAL
+   ========================================================= */
+
+.hero__composition {
+  position: relative;
+
+  width: 100%;
+  min-height: 100svh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =========================================================
+   BLOQUE VISUAL
+   FOTO + JOSÉ + PIRÁN
+   ========================================================= */
+
+.hero__visual {
+  position: relative;
+
+  width: min(88vw, 1420px);
+  height: min(88svh, 880px);
+
+  flex: 0 0 auto;
+
+  transform: translateX(clamp(5px, 4vw, 25px));
+}
+
+
+/* =========================================================
+   TÍTULO BASE
+   ========================================================= */
+
+.hero__title {
+  position: absolute;
+
+  margin: 0;
+
+  font-family: var(--font-display);
+  font-size: clamp(18rem, 18vw, 22rem);
+  font-weight: 400;
+
+  line-height: 0.82;
+  letter-spacing: -0.045em;
+
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   JOSÉ — ADELANTE DE LA FOTO
+   ========================================================= */
+
+.hero__title--jose {
+  z-index: 1;
+
+  top: 18%;
+  left: 44%;
+
+  color: rgba(255, 255, 255, 0.45);
+
+  transform: scaleX(1.13);
+  transform-origin: left center;
+}
+
+
+/* =========================================================
+   FOTO
+   ========================================================= */
+
+.hero__portrait {
+  position: absolute;
+
+  z-index: 2;
+
+  left: 0;
+  bottom: 0;
+
+  /*
+   * IMPORTANTE:
+   * ahora usamos porcentaje del hero__visual,
+   * no vw.
+   */
+  width: 58%;
+  height: 100%;
+
+  pointer-events: none;
+}
+
+.hero__portrait img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: left bottom;
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 58%,
+    transparent 96%
+  );
+
+  mask-image: linear-gradient(
+    to bottom,
+    black 58%,
+    transparent 96%
+  );
+
+  filter:
+    contrast(1.05)
+    saturate(0.9);
+}
+
+
+/* =========================================================
+   PIRÁN — DELANTE DE LA FOTO
+   ========================================================= */
+
+.hero__title--piran {
+  z-index: 3;
+
+  top: 52%;
+  left: 42%;
+
+  color: var(--blanco);
+
+  transform: scaleX(1.015);
+  transform-origin: left center;
+}
+
+
+/* =========================================================
+   SEGUIME EN LAS REDES
+   ========================================================= */
+
+.hero__scroll {
+  position: absolute;
+  z-index: 5;
+
+  right: clamp(10rem, 5vw, 10rem);
+  bottom: clamp(4rem, 3vh, 2.5rem);
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  color: rgba(255, 255, 255, 0.65);
+
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  transition:
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.hero__scroll span:last-child {
+  font-size: 1rem;
+
+  animation: scroll-indicator 2.2s ease-in-out infinite;
+}
+
+@keyframes scroll-indicator {
+  0%,
+  100% {
+    transform: translateY(-2px);
+  }
+
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+/* =========================================================
+   TÍTULOS DE SECCIÓN
+   ========================================================= */
+
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+
+  margin-bottom: clamp(2.5rem, 5vw, 5rem);
+}
+
+.section-heading p {
+  margin: 0;
+
+  color: var(--blanco-50);
+
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.section-heading h2 {
+  max-width: 780px;
+  margin: 0;
+
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 6.5rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   REDES SOCIALES
+   ========================================================= */
+
+.social {
+  width: min(100%, var(--content-width));
+  margin: 0 auto;
+
+  padding:
+    clamp(8rem, 12vw, 12rem)
+    var(--page-padding)
+    clamp(8rem, 12vw, 12rem);
+}
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.social__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: clamp(1.25rem, 2vw, 2rem);
+
+  padding-top: clamp(3rem, 5vw, 5rem);
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.social-card {
+  position: relative;
+
+  min-height: clamp(390px, 34vw, 470px);
+
+  padding:
+    clamp(4.75rem, 6vw, 6rem)
+    clamp(1.5rem, 2.4vw, 2.5rem)
+    clamp(1.5rem, 2.4vw, 2.5rem);
+
+  overflow: visible;
+  isolation: isolate;
+
+  background: rgba(255, 255, 255, 0.045);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: clamp(1.5rem, 2vw, 2rem);
+
+  opacity: 0;
+
+  transform: translateY(32px);
+
+  transition:
+    opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 350ms ease,
+    border-color 350ms ease;
+}
+
+
+/* Entrada en viewport */
+
+.social-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Entrada escalonada */
+
+.social-card:nth-child(2) {
+  transition-delay: 100ms;
+}
+
+.social-card:nth-child(3) {
+  transition-delay: 200ms;
+}
+
+
+/* =========================================================
+   LOGO / CÍRCULO SUPERIOR
+   ========================================================= */
+
+.social-card__brand {
+  position: absolute;
+
+  z-index: 5;
+
+  top: 0;
+  left: 50%;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0.88);
+
+  transition:
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+.social-card.is-visible .social-card__brand {
+  transform:
+    translate(-50%, -50%)
+    scale(1);
+}
+
+
+.social-card__brand-circle {
+  position: relative;
+
+  display: grid;
+  place-items: center;
+
+  width: clamp(88px, 7.5vw, 112px);
+  aspect-ratio: 1;
+
+  border-radius: 50%;
+
+  border: 5px solid var(--violeta);
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.16);
+
+  overflow: hidden;
+}
+
+
+.social-card__brand-circle i {
+  color: #fff;
+  font-size: clamp(3.5rem, 3vw, 2.8rem);
+  line-height: 1;
+}
+
+
+/* =========================================================
+   COLORES DE MARCA
+   ========================================================= */
+
+/*
+ * Acá sí permitimos identidad de marca.
+ * La card completa sigue siendo minimalista.
+ */
+
+
+/* Instagram */
+
+.social-card--instagram
+.social-card__brand-circle {
+  background:
+    linear-gradient(
+      135deg,
+      #833ab4,
+      #fd1d1d,
+      #fcb045
+    );
+}
+
+
+/* Facebook */
+
+.social-card--facebook
+.social-card__brand-circle {
+  background: #1877f2;
+}
+
+
+/* TikTok */
+
+.social-card--tiktok
+.social-card__brand-circle {
+  background: #090909;
+}
+
+
+/* =========================================================
+   CONTENIDO
+   ========================================================= */
+
+.social-card__content {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100%;
+}
+
+
+/* =========================================================
+   TÍTULO
+   ========================================================= */
+
+.social-card__title {
+  margin:
+    clamp(0.8rem, 1.5vw, 1.5rem)
+    0
+    clamp(2.5rem, 4vw, 4rem);
+
+  color: var(--blanco);
+
+  font-family: var(--font-display);
+
+  font-size: clamp(2.5rem, 3.8vw, 4rem);
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: -0.025em;
+
+  text-align: center;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   MÉTRICAS
+   ========================================================= */
+
+.social-card__stats {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  align-items: start;
+
+  gap: clamp(0.75rem, 1.25vw, 1.5rem);
+
+  margin-bottom: auto;
+}
+
+
+/* =========================================================
+   MÉTRICA INDIVIDUAL
+   ========================================================= */
+
+.social-stat {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  min-width: 0;
+
+  text-align: center;
+
+  opacity: 0;
+
+  transform: translateY(12px);
+
+  transition:
+    opacity 450ms ease,
+    transform 550ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+/* Aparición escalonada */
+
+.social-card.is-visible
+.social-stat {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.social-card.is-visible
+.social-stat:nth-child(1) {
+  transition-delay: 250ms;
+}
+
+
+.social-card.is-visible
+.social-stat:nth-child(2) {
+  transition-delay: 340ms;
+}
+
+
+.social-card.is-visible
+.social-stat:nth-child(3) {
+  transition-delay: 430ms;
+}
+
+
+/* =========================================================
+   ICONO MÉTRICA
+   ========================================================= */
+
+.social-stat__icon {
+  display: grid;
+  place-items: center;
+
+  width: 2.7rem;
+  height: 2.7rem;
+
+  margin-bottom: 0.8rem;
+
+  color: rgba(255, 255, 255, 0.78);
+
+  font-size: 2rem;
+  font-weight: 400;
+
+}
+
+
+/* =========================================================
+   NÚMERO
+   ========================================================= */
+
+.social-stat__number {
+  display: block;
+
+  color: var(--blanco);
+
+  font-family: var(--font-body);
+
+  font-size: clamp(1rem, 2vw, 1rem);
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: -0.035em;
+
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.social-card__cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  width: 100%;
+
+  margin-top: clamp(2.5rem, 4vw, 4rem);
+
+  padding:
+    1.1rem
+    1.35rem;
+
+  background: rgba(24, 12, 45, 0.42);
+
+  border-radius: 1rem;
+
+  color: rgba(255, 255, 255, 0.88);
+
+  font-size: clamp(1rem, 0.78vw, 1rem);
+  font-weight: 600;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  transition:
+    background-color 300ms ease,
+    transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+/* =========================================================
+   FLECHA
+   ========================================================= */
+
+.social-card__arrow {
+  display: block;
+
+  color: var(--blanco);
+
+  font-size: 1.15rem;
+  line-height: 1;
+
+  transform: translate(0, 0);
+
+  transition:
+    transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* =========================================================
+   HOVER CARDS — DESKTOP
+   ========================================================= */
+
+@media (hover: hover) and (pointer: fine) {
+
+  .social-card.is-visible:hover {
+    z-index: 10;
+
+    transform:
+      translateY(-8px)
+      scale(1.025);
+
+    background: rgba(255, 255, 255, 0.065);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .social-card.is-visible:hover .social-card__brand {
+    transform:
+      translate(-50%, -54%)
+      scale(1.08);
+  }
+
+  .social-card.is-visible:hover .social-card__cta {
+    background: rgba(20, 9, 39, 0.62);
+    transform: translateY(-2px);
+  }
+
+  .social-card.is-visible:hover .social-card__arrow {
+    transform: translate(4px, -4px);
+  }
+
+}
+
+
+/* =========================================================
+   HOVER
+   SOLO DONDE EXISTE HOVER REAL
+   ========================================================= */
+
+@media (hover: hover) and (pointer: fine) {
+
+  .manifesto__text span {
+    transition:
+      color 500ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 500ms cubic-bezier(0.16, 1, 0.3, 1),
+      letter-spacing 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .manifesto__text span:nth-child(1):hover {
+    transform:
+      translateX(-10px)
+      skewX(-2deg);
+
+    letter-spacing: -0.02em;
+  }
+
+  .manifesto__text span:nth-child(2):hover {
+    transform:
+      translateX(10px)
+      skewX(2deg);
+
+    letter-spacing: -0.02em;
+  }
+
+}
+
+/* =========================================================
+   MANIFIESTO — SCROLL EXPERIENCE
+   ========================================================= */
+
+.manifesto {
+  position: relative;
+
+  /*
+   * Esta altura crea el "recorrido" de scroll
+   * mientras el contenido queda clavado.
+   */
+  height: 190svh;
+}
+
+.manifesto__sticky {
+  position: sticky;
+  top: 0;
+
+  width: 100%;
+  height: 100svh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.manifesto__text {
+  width: fit-content;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.manifesto__text span {
+  display: block;
+  width: max-content;
+
+  font-family: var(--font-display);
+  font-size: clamp(12rem, 14vw, 18rem);
+  font-weight: 400;
+
+  line-height: 0.85;
+  letter-spacing: -0.045em;
+
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  /*
+   * El JS modifica --fill entre 0% y 100%.
+   *
+   * Abajo: violeta
+   * Arriba: blanco
+   */
+  --fill: 0%;
+
+  color: transparent;
+
+  background:
+    linear-gradient(
+      to top,
+      #8c6fc1 0%,
+      #8c6fc1 var(--fill),
+      #ffffff var(--fill),
+      #ffffff 100%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.manifesto__text--mobile {
+  display: none;
+}
+
+/* =========================================================
+   BLOQUE DE CONTENIDO / SEO
+   ========================================================= */
+
+.about {
+  width: min(100%, var(--content-width));
+  margin: 0 auto;
+  padding:
+    clamp(5rem, 10vw, 10rem)
+    var(--page-padding)
+    clamp(7rem, 13vw, 13rem);
+}
+
+.about__content {
+  display: flex;
+  grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.6fr);
+  align-items: center;
+  gap: clamp(3rem, 8vw, 9rem);
+}
+
+.about h2 {
+  max-width: 920px;
+  margin: 0;
+
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 7.5vw, 8.5rem);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  text-align: right;
+}
+
+.about__text {
+  max-width: 460px;
+  padding-top: 0.6rem;
+
+  color: var(--blanco-70);
+
+  font-size: clamp(0.95rem, 1.25vw, 1.15rem);
+  line-height: 1.75;
+}
+
+.about__text p {
+  margin: 0;
+}
+
+.about__text p + p {
+  margin-top: 1.5rem;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+  width: 100%;
+
+  min-height: 260px;
+
+  padding:
+    clamp(3rem, 6vw, 6rem)
+    var(--page-padding);
+
+  display: flex;
+  align-items: center;
+
+  background: #1f1237;
+  color: var(--blanco);
+}
+
+.footer__main {
+  width: min(100%, var(--content-width));
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 3rem;
+}
+
+.footer__brand img {
+  width: clamp(150px, 18vw, 260px);
+  height: auto;
+}
+
+.footer__claim {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 9vw, 5rem);
+  font-weight: 400;
+
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   TABLET
+   701px — 1024px
+   ========================================================= */
+
+@media (min-width: 701px) and (max-width: 1024px) {
+
+  /* =======================================================
+     HERO
+     ======================================================= */
+
+  .hero {
+    min-height: 86svh;
+  }
+
+  .hero__composition {
+    min-height: 86svh;
+
+    align-items: flex-start;
+
+    padding-top: clamp(1.5rem, 4vh, 3rem);
+  }
+
+  .hero__visual {
+    width: min(96vw, 980px);
+    height: 78svh;
+
+    margin: 0 auto;
+
+    transform: none;
+  }
+
+  .hero__portrait {
+    left: -2%;
+    top: 0;
+    bottom: auto;
+
+    width: 64%;
+    height: 100%;
+  }
+
+  .hero__portrait img {
+    object-position: left top;
+  }
+
+  .hero__title {
+    font-size: clamp(10rem, 22vw, 14rem);
+  }
+
+  .hero__title--jose {
+    top: 22%;
+    left: 40%;
+
+    transform: scaleX(1.1);
+  }
+
+  .hero__title--piran {
+    top: 51%;
+    left: 42%;
+
+    transform: scaleX(1);
+  }
+
+  .hero__scroll {
+    right: clamp(2rem, 5vw, 4rem);
+    bottom: 2rem;
+
+    font-size: 0.8rem;
+  }
+
+
+  /* =======================================================
+     REDES
+     ======================================================= */
+
+  .social {
+    padding:
+      7rem
+      clamp(2rem, 4vw, 3.5rem)
+      7rem;
+  }
+
+  .social__grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 5rem 1.5rem;
+
+    padding-top: 3.5rem;
+  }
+
+  .social-card {
+    min-height: 430px;
+  }
+
+  .social-card:last-child {
+    grid-column: 1 / -1;
+
+    width: calc(50% - 0.75rem);
+
+    justify-self: center;
+  }
+
+  .social-card__title {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+  }
+
+  .social-card__cta {
+    font-size: 0.85rem;
+  }
+
+
+/* =======================================================
+   MANIFIESTO — TABLET
+   ======================================================= */
+
+.manifesto {
+  position: relative;
+
+  height: 190svh;
+
+  min-height: 0;
+  padding: 0;
+
+  display: block;
+
+  overflow: visible;
+}
+
+.manifesto__sticky {
+  position: sticky;
+  top: 0;
+
+  width: 100%;
+  height: 100svh;
+
+  padding:
+    3rem
+    var(--page-padding);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.manifesto__text--desktop {
+  display: flex;
+
+  width: fit-content;
+
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  margin: 0 auto;
+}
+
+.manifesto__text--mobile {
+  display: none;
+}
+
+.manifesto__text--desktop span {
+  --fill: 0%;
+
+  display: block;
+  width: max-content;
+
+  font-size: clamp(6rem, 13vw, 9rem);
+  line-height: 0.86;
+
+  color: transparent;
+
+  background:
+    linear-gradient(
+      to top,
+      #8c6fc1 0%,
+      #8c6fc1 var(--fill),
+      #ffffff var(--fill),
+      #ffffff 100%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+
+  /* =======================================================
+     ABOUT
+     ======================================================= */
+
+  .about {
+    padding:
+      7rem
+      clamp(2rem, 5vw, 4rem)
+      8rem;
+  }
+
+  .about__content {
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 2.5rem;
+  }
+
+  .about h2 {
+    max-width: 850px;
+
+    font-size: clamp(4rem, 9vw, 6.5rem);
+
+    text-align: left;
+  }
+
+  .about__text {
+    max-width: 680px;
+
+    font-size: 1.05rem;
+  }
+
+
+  /* =======================================================
+     FOOTER
+     ======================================================= */
+
+  .footer {
+    min-height: 280px;
+  }
+
+  .footer__main {
+    width: 100%;
+
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer__brand img {
+    width: clamp(160px, 22vw, 220px);
+  }
+
+  .footer__claim {
+    font-size: clamp(3.5rem, 8vw, 5rem);
+  }
+}
+
+
+
+/* =========================================================
+   MOBILE
+   <= 700px
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  :root {
+    --page-padding: 1.25rem;
+  }
+
+
+  /* =======================================================
+     HERO
+     ======================================================= */
+
+  .hero {
+    min-height: 78svh;
+  }
+
+  .hero__composition {
+    min-height: 78svh;
+
+    display: block;
+
+    padding: 0;
+  }
+
+  /*
+   * Acá cambia la lógica:
+   * el visual nace arriba de la pantalla.
+   * No lo centramos verticalmente.
+   */
+
+.hero__visual {
+  position: relative;
+
+  width: 100%;
+  height: 70svh;
+
+  margin: 0;
+
+  transform: translateY(5vh);
+}
+
+
+  /* FOTO */
+
+  .hero__portrait {
+    left: 0;
+    top: 0;
+    bottom: auto;
+
+    width: 95%;
+    height: 66svh;
+
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero__portrait img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center top;
+  }
+
+
+  /* TÍTULOS */
+
+  .hero__title {
+    line-height: 0.8;
+    letter-spacing: -0.045em;
+  }
+
+  .hero__title--jose {
+    top: 50%;
+    left: 40%;
+    z-index: 3;
+
+    color: rgba(255, 255, 255, 0.45);
+
+    font-size: clamp(5.8rem, 25vw, 8rem);
+
+    transform:
+      translateX(-50%)
+      scaleX(1.08);
+  }
+
+  .hero__title--piran {
+    top: 64%;
+    left: 50%;
+
+    font-size: clamp(7rem, 31vw, 10rem);
+
+    transform:
+      translateX(-50%)
+      scaleX(1);
+  }
+
+
+  /* INDICADOR */
+
+  .hero__scroll {
+    right: 50%;
+    bottom: 1.25rem;
+
+    width: max-content;
+
+    transform: translateX(50%);
+
+    gap: 0.8rem;
+
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+  }
+
+
+  /* =======================================================
+     REDES
+     ======================================================= */
+
+  .social {
+    padding:
+      6rem
+      1.25rem
+      6rem;
+  }
+
+  .social__grid {
+    grid-template-columns: 1fr;
+
+    gap: 5.5rem;
+
+    padding-top: 3.5rem;
+  }
+
+  .social-card,
+  .social-card:last-child {
+    width: 100%;
+
+    min-height: 390px;
+
+    grid-column: auto;
+
+    justify-self: stretch;
+
+    /*
+     * Nada de zoom ni interacciones hover.
+     */
+    transform: translateY(32px);
+  }
+
+  .social-card.is-visible {
+    transform: translateY(0);
+  }
+
+  .social-card:nth-child(2),
+  .social-card:nth-child(3) {
+    transition-delay: 0ms;
+  }
+
+
+  /* Logo */
+
+  .social-card__brand-circle {
+    width: 82px;
+
+    border-width: 4px;
+  }
+
+  .social-card__brand-circle i {
+    font-size: 2.5rem;
+  }
+
+
+  /* Nombre red */
+
+  .social-card__title {
+    margin-bottom: 3rem;
+
+    font-size: clamp(2.6rem, 11vw, 3.4rem);
+  }
+
+
+  /* Stats */
+
+  .social-card__stats {
+    gap: 0.5rem;
+  }
+
+  .social-stat__icon {
+    width: 2.4rem;
+    height: 2.4rem;
+
+    font-size: 1.4rem;
+  }
+
+  .social-stat__number {
+    font-size: 0.9rem;
+  }
+
+
+  /* CTA */
+
+  .social-card__cta {
+    justify-content: center;
+
+    min-height: 58px;
+
+    padding:
+      1.1rem
+      1.25rem;
+
+    margin-top: 3rem;
+
+    text-align: center;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    letter-spacing: 0.1em;
+  }
+
+  /*
+   * Mobile: sin flecha.
+   */
+
+  .social-card__arrow {
+    display: none;
+  }
+
+
+/* =======================================================
+   MANIFIESTO — MOBILE / SCROLL EXPERIENCE
+   ======================================================= */
+
+.manifesto {
+  position: relative;
+
+  /*
+   * Recorrido total de la experiencia.
+   * Más alto = más scroll para completar el color.
+   */
+  height: 220svh;
+
+  min-height: 0;
+
+  padding: 0;
+
+  display: block;
+
+  overflow: visible;
+}
+
+
+/* =======================================================
+   STICKY
+   ======================================================= */
+
+.manifesto__sticky {
+  position: sticky;
+
+  top: 0;
+
+  width: 100%;
+  height: 100svh;
+
+  padding:
+    2rem
+    0.5rem;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  overflow: visible;
+}
+
+
+/* =======================================================
+   OCULTAMOS VERSIÓN DESKTOP
+   ======================================================= */
+
+.manifesto__text--desktop {
+  display: none;
+}
+
+
+/* =======================================================
+   VERSIÓN MOBILE
+   ======================================================= */
+
+.manifesto__text--mobile {
+  display: flex;
+
+  width: fit-content;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto;
+
+  text-align: center;
+
+    padding-inline: 0.3rem;
+}
+
+
+/* =======================================================
+   PALABRAS
+   ======================================================= */
+
+.manifesto__text--mobile span {
+  --fill: 0%;
+
+  display: block;
+
+  width: max-content;
+
+  margin: 0;
+
+  font-family: var(--font-display);
+
+  font-size: clamp(6rem, 30vw, 9rem);
+  font-weight: 400;
+
+  line-height: 0.78;
+  letter-spacing: -0.04em;
+
+  text-align: center;
+
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  /*
+   * El JS modifica --fill.
+   *
+   * 0%   = blanco
+   * 50%  = mitad violeta
+   * 100% = violeta completo
+   */
+
+  color: transparent;
+
+  background:
+    linear-gradient(
+      to top,
+
+      #8c6fc1 0%,
+      #8c6fc1 var(--fill),
+
+      #ffffff var(--fill),
+      #ffffff 100%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+
+  /* =======================================================
+     ABOUT
+     ======================================================= */
+
+  .about {
+    padding:
+      6rem
+      1.25rem
+      7rem;
+  }
+
+  .about__content {
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 2.25rem;
+  }
+
+  .about h2 {
+    max-width: 100%;
+
+    font-size: clamp(3.5rem, 15vw, 5rem);
+
+    line-height: 0.92;
+
+    text-align: left;
+  }
+
+  .about__text {
+    max-width: 100%;
+
+    padding: 0;
+
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+
+  /* =======================================================
+     FOOTER
+     ======================================================= */
+
+  .footer {
+    min-height: 300px;
+
+    padding:
+      4rem
+      1.25rem;
+  }
+
+  .footer__main {
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 2.5rem;
+
+    text-align: center;
+  }
+
+  .footer__brand img {
+    width: 170px;
+  }
+
+  .footer__claim {
+    font-size: clamp(3.5rem, 17vw, 5rem);
+  }
+}
+
+
+
+/* =========================================================
+   MOBILE PEQUEÑO
+   <= 390px
+   ========================================================= */
+
+@media (max-width: 390px) {
+
+  .hero__title--jose {
+    font-size: 5.4rem;
+  }
+
+  .hero__title--piran {
+    font-size: 6.6rem;
+  }
+
+  .social-card {
+    min-height: 375px;
+  }
+
+  .social-card__cta {
+    font-size: 0.78rem;
+  }
+
+  .manifesto__text--mobile span {
+    font-size: clamp(4.6rem, 23vw, 5.8rem);
+  }
+
+}
