@@ -1362,10 +1362,10 @@ body::before {
 
   .hero__title--jose {
     top: 50%;
-    left: 40%;
+    left: 35%;
     z-index: 3;
 
-    color: rgba(255, 255, 255, 0.45);
+    color: rgba(255, 255, 255, 0.35);
 
     font-size: clamp(5.8rem, 25vw, 8rem);
 
