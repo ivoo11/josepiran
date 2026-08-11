@@ -1390,7 +1390,7 @@ body::before {
 
   .hero__scroll {
     right: 50%;
-    bottom: 1.25rem;
+    bottom: 0.25rem;
 
     width: max-content;
 
