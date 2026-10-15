@@ -68,7 +68,6 @@ if (isset($_GET['gracias']) && !empty($_SESSION['registered'])) $success = true;
 <body>
 <main class="card">
 <a class="back" href="index.html">← Volver al sitio</a>
-<p class="eyebrow">JOSÉ PIRÁN · TIGRE</p>
 <?php if ($success): ?>
 <h1>¡Gracias por sumarte!</h1>
 <p class="intro">Recibimos tus datos. El equipo te contactará para coordinar próximas recorridas.</p>
