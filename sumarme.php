@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 require __DIR__ . '/includes/recorridas.php';
+require_once __DIR__ . '/includes/assets.php';
 header('Cache-Control: no-store');
 header('X-Content-Type-Options: nosniff');
 header('Referrer-Policy: same-origin');
@@ -63,15 +64,15 @@ if (isset($_GET['gracias']) && !empty($_SESSION['registered'])) $success = true;
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#321f55">
 <title>Sumate a recorrer Tigre | José Pirán</title>
-<link rel="stylesheet" href="css/recorridas.css">
+<link rel="stylesheet" href="<?= asset_url('css/recorridas.css') ?>">
 </head>
 <body>
 <main class="card">
-<a class="back" href="index.html">← Volver al sitio</a>
+<a class="back" href="./">← Volver al sitio</a>
 <?php if ($success): ?>
 <h1>¡Gracias por sumarte!</h1>
 <p class="intro">Recibimos tus datos. El equipo te contactará para coordinar próximas recorridas.</p>
-<a class="submit" href="index.html">VOLVER AL INICIO</a>
+<a class="submit" href="./">VOLVER AL INICIO</a>
 <?php else: ?>
 <h1>Sumate a<br>recorrer Tigre</h1>
 <p class="intro">Dejanos tus datos para que podamos contactarte y coordinar próximas recorridas.</p>

@@ -1,3 +1,4 @@
+<?php require_once __DIR__ . "/includes/assets.php"; ?>
 <!doctype html>
 <html lang="es">
 <head>
@@ -145,7 +146,7 @@
        CSS
        ===================================================== -->
 
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="<?= asset_url('css/styles.css') ?>">
 
 
   <!-- =====================================================
@@ -577,7 +578,7 @@
     </footer>
 
 
-  <script src="js/main.js" defer></script>
+  <script src="<?= asset_url('js/main.js') ?>" defer></script>
 
 </body>
 </html>
