@@ -190,7 +190,7 @@
         <!-- FOTO -->
         <div class="hero__portrait" aria-hidden="true">
             <img
-            src="assets/img/jose-piran.png"
+            src="<?= asset_url('assets/img/jose-piran.png') ?>"
             alt=""
             >
         </div>
