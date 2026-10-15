@@ -218,6 +218,10 @@ body::before {
    TÍTULO BASE
    ========================================================= */
 
+.hero__name {
+  display: contents;
+}
+
 .hero__title {
   position: absolute;
 
@@ -1503,29 +1507,31 @@ body::before {
     letter-spacing: -0.045em;
   }
 
-  .hero__title--jose {
-    top: 50%;
-    left: 35%;
+  .hero__name {
+    display: block;
+    position: absolute;
+    top: 64%;
+    left: 50%;
     z-index: 3;
+    transform: translateX(-50%);
+    width: max-content;
+  }
 
-    color: rgba(255, 255, 255, 0.35);
-
-    font-size: clamp(5.8rem, 25vw, 8rem);
-
-    transform:
-      translateX(-50%)
-      scaleX(1.08);
+  .hero__title--jose {
+    top: auto;
+    bottom: calc(100% + 0.65rem);
+    left: 0;
+    color: #d8c5eb;
+    font-size: clamp(2.8rem, 12vw, 4rem);
+    transform: none;
   }
 
   .hero__title--piran {
-    top: 64%;
-    left: 50%;
-
+    position: relative;
+    top: auto;
+    left: auto;
     font-size: clamp(7rem, 31vw, 10rem);
-
-    transform:
-      translateX(-50%)
-      scaleX(1);
+    transform: none;
   }
 
 
@@ -1873,7 +1879,7 @@ body::before {
 @media (max-width: 390px) {
 
   .hero__title--jose {
-    font-size: 5.4rem;
+    font-size: 2.8rem;
   }
 
   .hero__title--piran {
