@@ -1558,7 +1558,7 @@ body::before {
 
   .social {
     padding:
-      6rem
+      1.5rem
       1.25rem
       6rem;
   }
@@ -1581,10 +1581,10 @@ body::before {
 
     justify-self: stretch;
 
-    /*
-     * Nada de zoom ni interacciones hover.
-     */
-    transform: translateY(32px);
+    /* La card siempre está visible; sus métricas se animan al entrar. */
+    opacity: 1;
+    transform: none;
+    transition: background-color 350ms ease, border-color 350ms ease;
   }
 
   .social-card.is-visible {
@@ -1597,7 +1597,12 @@ body::before {
   }
 
 
-  /* Logo */
+  /* Logo visible desde el inicio, sin animación de entrada. */
+
+  .social-card .social-card__brand {
+    transform: translate(-50%, -50%) scale(1);
+    transition: none;
+  }
 
   .social-card__brand-circle {
     width: 82px;

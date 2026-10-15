@@ -266,7 +266,7 @@
 
             <strong
               class="social-stat__number"
-              data-count="1284"
+              data-count="2284"
             >
               0
             </strong>
@@ -281,7 +281,7 @@
 
             <strong
               class="social-stat__number"
-              data-count="327"
+              data-count="1327"
             >
               0
             </strong>
@@ -296,7 +296,7 @@
 
             <strong
               class="social-stat__number"
-              data-count="8421"
+              data-count="9421"
             >
               0
             </strong>
@@ -353,7 +353,7 @@
 
             <strong
               class="social-stat__number"
-              data-count="964"
+              data-count="1964"
             >
               0
             </strong>
@@ -368,7 +368,7 @@
 
             <strong
               class="social-stat__number"
-              data-count="218"
+              data-count="1218"
             >
               0
             </strong>
@@ -383,7 +383,7 @@
 
             <strong
               class="social-stat__number"
-              data-count="146"
+              data-count="1146"
             >
               0
             </strong>
@@ -439,7 +439,7 @@
 
             <strong
               class="social-stat__number"
-              data-count="2156"
+              data-count="3156"
             >
               0
             </strong>
@@ -454,7 +454,7 @@
 
             <strong
               class="social-stat__number"
-              data-count="481"
+              data-count="1481"
             >
               0
             </strong>
@@ -469,7 +469,7 @@
 
             <strong
               class="social-stat__number"
-              data-count="12740"
+              data-count="13740"
             >
               0
             </strong>
